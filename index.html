@@ -1,0 +1,188 @@
+<html>
+<head>
+	<title>The Bricks</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet"href="stil.css">
+	<script src="jquery-3.5.1.min.js"></script>
+</head>
+<body onload="risi()"onload="navodila()"onload="risi2()">
+	<p id="opomba">
+		Press space to start
+	</p>
+<div id="gameOver">
+	<p id="poskusiZnova">
+		Game over!
+	</p>
+	<p id="koncneTocke">
+		You've reached  points!
+	</p>
+	<div id="gumbZnova"class="gumb"onclick="window.location.reload()";>
+		Retry
+	</div>
+</div>
+<div id="zmaga">
+	<p id="zmagalSi">
+		Congratulations, You've won!
+	</p>
+	<div id="gumbZnova"class="gumb"onclick="window.location.reload()";>
+		Play again
+	</div>
+	<p id="zmagovalneTocke">
+		You reached've  points!
+	</p>
+	<img src="slike/diamant.png" id="d1">
+	<img src="slike/diamant.png" id="d2">
+</div>
+<table id="glavni">
+<tr>
+	<td>
+		<p id="tockeText">Points: <mark id="tocke">0</mark></p>
+		<img id="naslov" src="slike/MINEBRICKS.png">
+		<p id="timerText">Time: <mark id="cas">00:00</mark></p>
+	</td>
+</tr>
+<tr>
+	<td><table id="meni">
+
+			<tr>
+				<td>
+					<div id="gumbGlasba"class="gumb"onclick="glasba()">
+						Music
+					</div>
+					<div id="gumbNavodila"class="gumb"onclick="navodila()">
+						Instructions
+					</div>
+					<div id="gumbVizitka"class="gumb"onclick="vizitka()">
+						Business card
+					</div>
+					<div id="tezavnost">
+						Difficulty:
+					</div>
+					<div id="lahka"class="gumb"onclick="lahko()">
+						Easy
+					</div>
+					<div id="srednja"class="gumb"onclick="srednje()">
+						Medium
+					</div>
+					<div id="tezka"class="gumb"onclick="tezko()">
+						Hard
+					</div>
+			</td>
+			</tr>
+		</table>
+	</td>
+	<td width="900" height="700">	
+		<canvas id="canvas" width="900" height="700">
+
+		</canvas>
+	</td>
+	<td>
+		<table id="legenda">
+			<tr>
+				<td><p class="naslov">Block values:</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/dirt.png">
+					<h class="tocke">
+						= 1
+					</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/grass.png">
+				<h id="drugi"class="tocke">
+						= 1
+					</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/stone.png">
+				<h id="tretji" class="tocke">
+						= 2
+					</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/iron.png">
+				<h id="cetrti" class="tocke">
+						= 3
+					</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/gold.png">
+				<h id="peti" class="tocke">
+						= 4
+					</p></td>
+			</tr>
+			<tr>
+				<td><img class="legendaSlike" src="slike/diamond.png">
+				<h id="sesti" class="tocke">
+						= 5
+					</p></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+	<script src="skripta.js"></script>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+document.getElementById('canvas').style.cursor = 'none';
+function risi(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(350, 500, 10, 0, Math.PI*2, true);
+	ctx.fillStyle='green';
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+}
+Swal.fire({
+  title: 'Welcome',
+  text:'Point of the game is to destroy all the blocks on the screen in shortest possible time. To do that, you need to allow the ball to destroy all the blocks, which means that you need to prevent it from touching the ground, using the paddle at the bottom of the screen.You can use A and D keys on your keyboard to move the paddle or you can use your mouse instead. Some blocks take multiple hits, but are worth more points. Press SPACE to start the game and good luck!',
+  imageUrl: 'slike/instructions.png',
+  imageWidth: 575,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
+var klik=new Audio("zvok/click.mp3");
+function vizitka(){
+	klik.play();
+	Swal.fire({
+  title: 'Business card',
+  text:'Page made by Luka Grahor. All rights for images and sound effects belong to Mojang',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  }
+})
+}
+var audio=new Audio("zvok/glasba.mp3");
+var predvajaj=false;
+	function glasba(){
+		klik.play();
+		if(predvajaj==false){
+			audio.play();
+			predvajaj=true;
+		}
+		else{
+			audio.pause();
+			predvajaj=false;
+		}
+	}
+function navodila(){
+	klik.play();
+	Swal.fire({
+   title: 'Welcome',
+  text:'Point of the game is to destroy all the blocks on the screen in shortest possible time. To do that, you need to allow the ball to destroy all the blocks, which means that you need to prevent it from touching the ground, using the paddle at the bottom of the screen.You can use A and D keys on your keyboard to move the paddle or you can use your mouse instead. Some blocks take multiple hits, but are worth more points. Good luck!',
+  imageUrl: 'slike/instructions.png',
+  imageWidth: 575,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
+}
+
+
+</script>
+</body>
+</html>
