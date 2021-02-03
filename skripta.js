@@ -48,21 +48,6 @@ $(document).keydown(onKeyDown);
 $(document).keyup(onKeyUp);  
 var x = 350;
 var y = 500;
-function lahko(){
-  klik.play();
-  dx=2
-  dy=3;
-}
-function srednje(){
-  klik.play();
-  dx=3
-  dy=4;
-}
-function tezko(){
-  klik.play();
-  dx=9
-  dy=10;
-}
 var WIDTH;
 var HEIGHT;
 var r=10;
@@ -569,21 +554,6 @@ $("#tocke").html(tocke);
     document.getElementById("zmagovalneTocke").innerHTML = "You've reached "+tocke+" points!";
     return;
   }
-  function lahko(){
-  klik.play();
-  dx=2
-  dy=3;
-}
-function srednje(){
-  klik.play();
-  dx=3
-  dy=4;
-}
-function tezko(){
-  klik.play();
-  dx=9
-  dy=10;
-}
 }
 
 init();
