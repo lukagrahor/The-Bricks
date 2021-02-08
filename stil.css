@@ -6,13 +6,15 @@
 	font-family:Mc;
 	src: url('Mc2.otf');
 }
+body{
+	background-size:100%;
+    	background-repeat: repeat-y;
+    	background-attachment: fixed;
+	background:url("slike/ozadje.png");	
+}
 #glavni{
 	width:1903px;
 	height:966px;
-	background-size:100%;
-    background-repeat: repeat-y;
-    background-attachment: fixed;
-	background:url("slike/ozadje.png");
 	position:relative;
 }
 #poskusiZnova{
