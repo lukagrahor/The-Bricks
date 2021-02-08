@@ -7,10 +7,9 @@
 	src: url('Mc2.otf');
 }
 body{
+	background:url("slike/ozadje.png");
 	background-size:100%;
-    	background-repeat: repeat-y;
-    	background-attachment: fixed;
-	background:url("slike/ozadje.png");	
+    	background-attachment:fixed;	
 }
 #glavni{
 	width:1903px;
